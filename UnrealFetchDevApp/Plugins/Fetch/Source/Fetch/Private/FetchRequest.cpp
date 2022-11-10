@@ -21,7 +21,7 @@ void UFetchRequest::Process(FString Url, FFetchOptions Options)
 		Request->SetHeader(Header.Key, Header.Value);
 	}
 
-	if (Options.Method != GET)
+	if (Options.Method != Get)
 	{
 		Request->SetContentAsString(Options.Body);
 	}
@@ -72,16 +72,16 @@ FString UFetchRequest::HttpMethodToString(FFetchOptionsMethod Method)
 {
 	switch (Method)
 	{
-	case GET:
+	case Get:
 		return "GET";
 
-	case POST:
+	case Post:
 		return "POST";
 
-	case PUT:
+	case Put:
 		return "PUT";
 
-	case DELETE:
+	case Delete:
 		return "DELETE";
 	}
 

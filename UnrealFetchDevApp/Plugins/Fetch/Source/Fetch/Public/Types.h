@@ -12,10 +12,10 @@
 UENUM(BlueprintType)
 enum FFetchOptionsMethod
 {
-	GET,
-	POST,
-	PUT,
-	DELETE
+	Get,
+	Post,
+	Put,
+	Delete
 };
 
 USTRUCT(BlueprintType)
@@ -38,7 +38,7 @@ struct FETCH_API FFetchOptions
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fetch | Options")
-		TEnumAsByte<FFetchOptionsMethod> Method = FFetchOptionsMethod::GET;
+		TEnumAsByte<FFetchOptionsMethod> Method = FFetchOptionsMethod::Get;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fetch | Options")
 		FString Body;
@@ -54,7 +54,7 @@ struct FETCH_API FFetchJsonOptions
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fetch | JSONOptions")
-		TEnumAsByte<FFetchOptionsMethod> Method = FFetchOptionsMethod::GET;
+		TEnumAsByte<FFetchOptionsMethod> Method = FFetchOptionsMethod::Get;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fetch | JSONOptions")
 		USimpleJsonValue* Body;
