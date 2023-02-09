@@ -57,7 +57,7 @@ public:
 		TEnumAsByte<FFetchOptionsMethod> Method = FFetchOptionsMethod::Get;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fetch | JSONOptions")
-		USimpleJsonValue* Body;
+		USimpleJsonValue* Body = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fetch | JSONOptions")
 		TArray<FFetchHeader> Headers;
