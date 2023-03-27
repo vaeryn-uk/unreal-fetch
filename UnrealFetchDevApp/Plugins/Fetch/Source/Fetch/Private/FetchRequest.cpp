@@ -58,6 +58,13 @@ void UFetchRequest::OnResponse(FHttpRequestPtr Request, FHttpResponsePtr Respons
 	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(FetchResponse->ResponseText);
 
 	if (OnJsonDelegate.IsBound()) {
+		// Special case: if the server sends back no content, we still consider this "ok" json.
+		if (FetchResponse->StatusCode == 204 && FetchResponse->ResponseText.Len() == 0)
+		{
+			OnJsonDelegate.ExecuteIfBound(nullptr, FetchResponse);
+			return;
+		}
+
 		if (FJsonSerializer::Deserialize(Reader, ParsedJSON))
 		{
 			OnJsonDelegate.ExecuteIfBound(USimpleJsonValue::Get(ParsedJSON), FetchResponse);
